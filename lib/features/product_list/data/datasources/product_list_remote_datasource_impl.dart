@@ -6,7 +6,6 @@ import 'package:flutter_test_pyramid_spike/features/product_list/data/models/pro
 
 class ProductListRemoteDataSourceImpl implements ProductListRemoteDataSource {
   ProductListRemoteDataSourceImpl({this.httpClient});
-
   final HttpClient httpClient;
 
   @override
@@ -14,7 +13,7 @@ class ProductListRemoteDataSourceImpl implements ProductListRemoteDataSource {
     final response =
         await httpClient.get('http://www.mocky.io/v2/5e00610e2f00006b0013b349');
 
-    if (response.statusCode != 200) {
+    if (response.statusCode < 200 || response.statusCode > 299) {
       throw APIException();
     }
 
