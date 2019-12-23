@@ -14,8 +14,8 @@ class ProductsListRepositoryImpl implements ProductsListRepository {
   @override
   Future<Either<Failure, List<Product>>> getProducts() async {
     try {
-      final feed = await remoteDataSource.getProducts();
-      return Right(feed);
+      final products = await remoteDataSource.getProducts();
+      return Right(products);
     } on APIException {
       return Left(APIFailure(message: 'Api Error'));
     }
