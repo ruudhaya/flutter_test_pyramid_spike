@@ -7,11 +7,11 @@ class ProductsListInitial extends ProductsListState {}
 class ProductsListLoading extends ProductsListState {}
 
 class ProductsListLoaded extends ProductsListState {
-  final List<Product> products;
   ProductsListLoaded(this.products);
+  final List<Product> products;
 }
 
 class ProductsListError extends ProductsListState {
-  final String message;
   ProductsListError(this.message);
+  final String message;
 }

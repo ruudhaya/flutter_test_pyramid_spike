@@ -3,7 +3,7 @@ import 'package:flutter_test_pyramid_spike/features/product_list/domain/entities
 import 'package:flutter_test_pyramid_spike/features/product_list/presentation/widgets/product_list_item.dart';
 
 class ProductsList extends StatelessWidget {
-  ProductsList({@required this.products});
+  const ProductsList({@required this.products});
   final List<Product> products;
 
   @override

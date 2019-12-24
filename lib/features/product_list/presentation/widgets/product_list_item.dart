@@ -3,7 +3,7 @@ import 'package:flutter_test_pyramid_spike/features/product_list/domain/entities
 import 'package:flutter_test_pyramid_spike/features/product_list/presentation/widgets/product_list_item_imageview.dart';
 
 class ProductListItem extends StatelessWidget {
-  ProductListItem({@required this.product});
+  const ProductListItem({@required this.product});
   final Product product;
 
   @override
@@ -11,17 +11,17 @@ class ProductListItem extends StatelessWidget {
     return Container(
         height: 100,
         child: Column(children: <Widget>[
-          Divider(height: 5.0),
+          const Divider(height: 5.0),
           ListTile(
             title: Text(
               '${product.name}',
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 17.0,
               ),
             ),
             subtitle: Text(
               '${product.price}',
-              style: new TextStyle(
+              style: const TextStyle(
                 fontSize: 12.0,
                 color: Colors.deepOrangeAccent,
                 fontStyle: FontStyle.italic,

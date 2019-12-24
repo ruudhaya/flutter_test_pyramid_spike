@@ -10,8 +10,8 @@ class MockHttpClient extends Mock implements HttpClient {}
 
 void main() {
   test('calls HttpClient and gets response', () async {
-    String url = 'http://www.mocky.io/v2/5e00610e2f00006b0013b349';
-    String responseJSON =
+    const url = 'http://www.mocky.io/v2/5e00610e2f00006b0013b349';
+    const responseJSON =
         '[{\"upc\":\"0001\",\"name\":\"Simple Mobile - Apple iPhone 11 Pro Max (64GB) - Silver\",\"price\":\"\$1,099.99\",\"commentsCount\":10,\"image\":\"https:\/\/m.media-amazon.com\/images\/I\/81hA4nb-+qL._AC_UY436_QL65_ML3_.jpg\"}]';
     final mockClient = MockHttpClient();
 
@@ -19,14 +19,14 @@ void main() {
         .thenAnswer((_) async => http.Response(responseJSON, 200));
 
     final dataSource = ProductListRemoteDataSourceImpl(httpClient: mockClient);
-    List<ProductModel> products = await dataSource.getProducts();
+    final List<ProductModel> products = await dataSource.getProducts();
 
     verify(mockClient.get(url));
     expect(products, isInstanceOf<List<ProductModel>>());
   });
 
   test('throws an exception if the http call completes with an error', () {
-    String url = 'http://www.mocky.io/v2/5e00610e2f00006b0013b349';
+    const url = 'http://www.mocky.io/v2/5e00610e2f00006b0013b349';
     final mockClient = MockHttpClient();
 
     when(mockClient.get(url))

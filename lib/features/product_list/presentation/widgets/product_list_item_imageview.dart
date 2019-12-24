@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ProductListItemImageView extends StatelessWidget {
-  ProductListItemImageView({this.url});
+  const ProductListItemImageView({this.url});
   final String url;
 
   @override

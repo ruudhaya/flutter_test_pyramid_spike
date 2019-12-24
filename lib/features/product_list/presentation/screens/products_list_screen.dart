@@ -34,9 +34,9 @@ class _ProductsListScreenState extends State<ProductsListScreen> {
           bloc: bloc,
           builder: (BuildContext context, ProductsListState productsListState) {
             if (productsListState is ProductsListLoading) {
-              return Center(child: CircularProgressIndicator());
+              return Center(child: const CircularProgressIndicator());
             } else if (productsListState is ProductsListError) {
-              return Text('Error!!!');
+              return const Text('Error!!!');
             } else if (productsListState is ProductsListLoaded) {
               return ProductsList(products: productsListState.products);
             }
