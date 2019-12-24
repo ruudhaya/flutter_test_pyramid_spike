@@ -1,7 +1,8 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-class Product {
-  Product(
+class Product extends Equatable {
+  const Product(
       {@required this.upc,
       @required this.name,
       @required this.price,
@@ -13,4 +14,7 @@ class Product {
   final String price;
   final int commentsCount;
   final String image;
+
+  @override
+  List<Object> get props => [upc];
 }

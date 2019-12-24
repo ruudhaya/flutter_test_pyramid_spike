@@ -8,6 +8,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        brightness: Brightness.light,
+        primaryColor: Colors.lightGreen[
+            400], //Changing this will change the color of the TabBar
+        accentColor: Colors.black,
+      ),
       home: DefaultTabController(
         length: 2,
         child: Scaffold(

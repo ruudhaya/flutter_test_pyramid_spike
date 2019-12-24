@@ -38,7 +38,9 @@ class _ProductsListScreenState extends State<ProductsListScreen> {
             } else if (productsListState is ProductsListError) {
               return const Text('Error!!!');
             } else if (productsListState is ProductsListLoaded) {
-              return ProductsList(products: productsListState.products);
+              return ProductsList(
+                  products: productsListState.products,
+                  cartQuantityProvider: bloc);
             }
             return Container(
                 color: Colors.orangeAccent,
