@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test_pyramid_spike/core/error/no_params.dart';
 import 'package:flutter_test_pyramid_spike/core/http/http_client_impl.dart';
+import 'package:flutter_test_pyramid_spike/features/cart/data/repositories/cart_repository_impl.dart';
 import 'package:flutter_test_pyramid_spike/features/product_list/data/datasources/product_list_remote_datasource_impl.dart';
 import 'package:flutter_test_pyramid_spike/features/product_list/data/repositories/products_list_repository_impl.dart';
 import 'package:flutter_test_pyramid_spike/features/product_list/presentation/bloc/products_list_bloc.dart';
@@ -21,6 +22,7 @@ class _ProductsListScreenState extends State<ProductsListScreen> {
   void initState() {
     super.initState();
     bloc = ProductsListBloc(
+        cartRepository: CartRepositoryImpl(),
         repository: ProductsListRepositoryImpl(
             remoteDataSource: ProductListRemoteDataSourceImpl(
                 httpClient: HttpClientImpl(client: http.Client()))));
@@ -43,7 +45,7 @@ class _ProductsListScreenState extends State<ProductsListScreen> {
                   cartQuantityProvider: bloc);
             }
             return Container(
-                color: Colors.orangeAccent,
+                color: Colors.white,
                 height: double.infinity,
                 width: double.infinity);
           }),

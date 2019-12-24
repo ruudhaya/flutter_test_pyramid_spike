@@ -40,4 +40,7 @@ class CartRepositoryImpl implements CartRepository {
     return _cartItems.firstWhere((cartItem) => cartItem.product == product,
         orElse: () => null);
   }
+
+  @override
+  List<CartItem> getCartItems() => _cartItems;
 }

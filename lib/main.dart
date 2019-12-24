@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test_pyramid_spike/features/product_list/presentation/screens/products_list_screen.dart';
 
+import 'features/cart/presentation/screens/cart_screen.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -29,7 +31,7 @@ class MyApp extends StatelessWidget {
           body: TabBarView(
             children: [
               ProductsListScreen(),
-              Tab(icon: Icon(Icons.shopping_cart)),
+              CartScreen(),
             ],
           ),
         ),
