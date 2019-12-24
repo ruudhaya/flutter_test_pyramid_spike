@@ -5,7 +5,7 @@ List<ProductModel> productsFromJson(List<dynamic> jsonItem) =>
     List<ProductModel>.from(jsonItem.map((x) => ProductModel.fromJson(x)));
 
 class ProductModel extends Product {
-  ProductModel(
+  const ProductModel(
       {@required String upc,
       @required String name,
       @required String price,
