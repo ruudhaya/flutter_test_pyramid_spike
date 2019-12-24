@@ -30,11 +30,4 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
-  //   return MaterialApp(
-  //       home: Scaffold(
-  //           appBar: AppBar(
-  //               title: const Text('Product List'),
-  //               backgroundColor: Colors.blueGrey),
-  //           body: ProductsListScreen()));
-  // }
 }
