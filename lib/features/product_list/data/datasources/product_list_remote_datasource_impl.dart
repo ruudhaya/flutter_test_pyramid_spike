@@ -11,7 +11,7 @@ class ProductListRemoteDataSourceImpl implements ProductListRemoteDataSource {
   @override
   Future<List<ProductModel>> getProducts() async {
     final response =
-        await httpClient.get('http://www.mocky.io/v2/5e00610e2f00006b0013b349');
+        await httpClient.get('http://www.mocky.io/v2/5e01d1cb2f00008000dcd310');
 
     if (response.statusCode < 200 || response.statusCode > 299) {
       throw APIException();
