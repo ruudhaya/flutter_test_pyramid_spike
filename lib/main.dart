@@ -8,10 +8,33 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: Scaffold(
-            appBar: AppBar(
-                title: const Text('Product List'),
-                backgroundColor: Colors.blueGrey),
-            body: ProductsListScreen()));
+      home: DefaultTabController(
+        length: 2,
+        child: Scaffold(
+          appBar: AppBar(
+            bottom: TabBar(
+              tabs: [
+                Tab(icon: Icon(Icons.list)),
+                Tab(icon: Icon(Icons.shopping_cart)),
+              ],
+            ),
+            title: const Text('Shopper'),
+          ),
+          body: TabBarView(
+            children: [
+              ProductsListScreen(),
+              Tab(icon: Icon(Icons.shopping_cart)),
+            ],
+          ),
+        ),
+      ),
+    );
   }
+  //   return MaterialApp(
+  //       home: Scaffold(
+  //           appBar: AppBar(
+  //               title: const Text('Product List'),
+  //               backgroundColor: Colors.blueGrey),
+  //           body: ProductsListScreen()));
+  // }
 }
