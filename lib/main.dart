@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test_pyramid_spike/features/product_list/presentation/screens/products_list_screen.dart';
-
-import 'features/cart/presentation/screens/cart_screen.dart';
+import 'package:flutter_test_pyramid_spike/features/cart/presentation/screens/cart_screen.dart';
 
 void main() => runApp(MyApp());
 

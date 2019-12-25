@@ -29,8 +29,9 @@ dependencies:
   equatable: ^0.6.0
 
 dev_dependencies:
-  flutter_test:
+  flutter_driver:
     sdk: flutter
+  test: any
   mockito: ^4.0.0
 
 # For information on the generic Dart part of this file, see the
