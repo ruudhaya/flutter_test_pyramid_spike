@@ -1,11 +1,12 @@
 import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:flutter_test_pyramid_spike/core/error/exception.dart';
 import 'package:flutter_test_pyramid_spike/core/http/http_client.dart';
 import 'package:flutter_test_pyramid_spike/features/product_list/data/datasources/product_list_remote_datasource.dart';
 import 'package:flutter_test_pyramid_spike/features/product_list/data/models/product_model.dart';
 
 class ProductListRemoteDataSourceImpl implements ProductListRemoteDataSource {
-  ProductListRemoteDataSourceImpl({this.httpClient});
+  ProductListRemoteDataSourceImpl({@required this.httpClient});
   final HttpClient httpClient;
 
   @override

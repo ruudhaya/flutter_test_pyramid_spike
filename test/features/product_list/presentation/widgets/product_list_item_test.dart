@@ -27,7 +27,7 @@ void main() {
     });
   });
 
-  testWidgets('Stepper increments and decrements', (WidgetTester tester) async {
+  testWidgets('Stepper increment and decrement', (WidgetTester tester) async {
     provideMockedNetworkImages(() async {
       final products = getProductsFromJson(
           '[{\"upc\":\"0003\",\"name\":\"Apple iPhone 7\",\"price\":\"\$1,099.99\",\"commentsCount\":2,\"image\":\"https:\/\/m.media-amazon.com\/images\/I\/31UU-oejIwL._AC_UY400_QL65_ML3_.jpg\"}]');
