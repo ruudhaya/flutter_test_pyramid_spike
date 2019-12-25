@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
             bottom: TabBar(
               tabs: [
                 Tab(icon: Icon(Icons.list)),
-                Tab(icon: Icon(Icons.shopping_cart)),
+                Tab(key: const Key('CartTab'), icon: Icon(Icons.shopping_cart)),
               ],
             ),
             title: const Text('Shopper'),

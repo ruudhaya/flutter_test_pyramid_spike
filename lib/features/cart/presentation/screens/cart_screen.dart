@@ -28,13 +28,23 @@ class _CartScreenState extends State<CartScreen> {
           bloc: bloc,
           builder: (BuildContext context, CartState cartState) {
             if (cartState is CartLoading) {
-              return Center(child: const CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             } else if (cartState is CartError) {
-              return const Text('Error!!!');
+              return const Center(
+                  child: Text(
+                'Error!!!',
+                key: Key('ErrorMessage'),
+              ));
             } else if (cartState is CartLoaded) {
-              return CartList(
-                cartItems: cartState.cartItems,
-              );
+              return cartState.cartItems.isNotEmpty
+                  ? CartList(
+                      cartItems: cartState.cartItems,
+                    )
+                  : const Center(
+                      child: Text(
+                      'No Items In Cart',
+                      key: Key('ErrorMessage'),
+                    ));
             }
             return Container(
                 color: Colors.white,
