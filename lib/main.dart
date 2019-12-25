@@ -21,8 +21,12 @@ class MyApp extends StatelessWidget {
           appBar: AppBar(
             bottom: TabBar(
               tabs: [
-                Tab(icon: Icon(Icons.list)),
-                Tab(key: const Key('CartTab'), icon: Icon(Icons.shopping_cart)),
+                Tab(
+                    key: const Key('Main_ProductListTab'),
+                    icon: Icon(Icons.list)),
+                Tab(
+                    key: const Key('Main_CartTab'),
+                    icon: Icon(Icons.shopping_cart)),
               ],
             ),
             title: const Text('Shopper'),

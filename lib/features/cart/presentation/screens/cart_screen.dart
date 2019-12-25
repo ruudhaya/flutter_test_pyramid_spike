@@ -33,7 +33,7 @@ class _CartScreenState extends State<CartScreen> {
               return const Center(
                   child: Text(
                 'Error!!!',
-                key: Key('ErrorMessage'),
+                key: Key('CartScreen_ErrorMessage'),
               ));
             } else if (cartState is CartLoaded) {
               return cartState.cartItems.isNotEmpty
@@ -43,7 +43,7 @@ class _CartScreenState extends State<CartScreen> {
                   : const Center(
                       child: Text(
                       'No Items In Cart',
-                      key: Key('ErrorMessage'),
+                      key: Key('CartScreen_ErrorMessage'),
                     ));
             }
             return Container(

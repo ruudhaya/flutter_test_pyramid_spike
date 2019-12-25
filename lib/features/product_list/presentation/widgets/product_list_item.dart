@@ -44,12 +44,14 @@ class _ProductListItemState extends State<ProductListItem> {
                     ))),
             trailing: Row(mainAxisSize: MainAxisSize.min, children: <Widget>[
               IconButton(
+                key: const Key('ProductListItem_Remove'),
                 icon: Icon(Icons.remove),
                 onPressed: () => setState(
                     () => _itemQuantity() > 0 ? _decrementQuantity() : null),
               ),
               Text(_itemQuantity().toString()),
               IconButton(
+                  key: const Key('ProductListItem_Add'),
                   icon: Icon(Icons.add),
                   onPressed: () => setState(() => _incrementQuantity()))
             ]),

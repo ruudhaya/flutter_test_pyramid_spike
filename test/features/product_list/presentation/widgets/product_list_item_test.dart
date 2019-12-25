@@ -21,8 +21,8 @@ void main() {
       expect(find.text('Apple iPhone 7'), findsOneWidget);
       expect(find.text('\$1,099.99'), findsOneWidget);
       expect(find.byType(Image), findsOneWidget);
-      expect(find.byIcon(Icons.remove), findsOneWidget);
-      expect(find.byIcon(Icons.add), findsOneWidget);
+      expect(find.byKey(const Key('ProductListItem_Add')), findsOneWidget);
+      expect(find.byKey(const Key('ProductListItem_Remove')), findsOneWidget);
       expect(find.text('0'), findsOneWidget);
     });
   });
@@ -38,14 +38,14 @@ void main() {
                   product: products[0],
                   cartQuantityProvider: MockCartQuantityProvider()))));
 
-      final addButton = find.byIcon(Icons.add);
+      final addButton = find.byKey(const Key('ProductListItem_Add'));
       await tester.tap(addButton);
       await tester.tap(addButton);
 
       await tester.pump();
       expect(find.text('2'), findsOneWidget);
 
-      final removeButton = find.byIcon(Icons.remove);
+      final removeButton = find.byKey(const Key('ProductListItem_Remove'));
       await tester.tap(removeButton);
 
       await tester.pump();

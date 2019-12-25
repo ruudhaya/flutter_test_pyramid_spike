@@ -23,8 +23,8 @@ class ProductsListBloc extends Bloc<NoParams, ProductsListState>
     final output = await repository.getProducts();
     yield* output.fold((failure) async* {
       yield ProductsListError('Something went wrong!');
-    }, (feedItems) async* {
-      yield ProductsListLoaded(feedItems);
+    }, (products) async* {
+      yield ProductsListLoaded(products);
     });
   }
 
