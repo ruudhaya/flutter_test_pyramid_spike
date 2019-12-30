@@ -5,6 +5,7 @@ import 'package:flutter_test_pyramid_spike/features/cart/presentation/blocs/cart
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test_pyramid_spike/features/cart/presentation/blocs/cart_state.dart';
 import 'package:flutter_test_pyramid_spike/features/cart/presentation/widgets/cart_list.dart';
+import 'package:flutter_test_pyramid_spike/injection_container.dart';
 
 class CartScreen extends StatefulWidget {
   @override
@@ -12,20 +13,20 @@ class CartScreen extends StatefulWidget {
 }
 
 class _CartScreenState extends State<CartScreen> {
-  CartBloc bloc;
+  CartBloc _bloc;
 
   @override
   void initState() {
+    _bloc = serviceLocator<CartBloc>();
     super.initState();
-    bloc = CartBloc(repository: CartRepositoryImpl());
   }
 
   @override
   Widget build(BuildContext context) {
-    bloc.add(NoParams());
+    _bloc.add(NoParams());
     return Scaffold(
       body: BlocBuilder<CartBloc, CartState>(
-          bloc: bloc,
+          bloc: _bloc,
           builder: (BuildContext context, CartState cartState) {
             if (cartState is CartLoading) {
               return const Center(child: CircularProgressIndicator());
@@ -56,7 +57,7 @@ class _CartScreenState extends State<CartScreen> {
 
   @override
   void dispose() {
-    bloc.close();
+    _bloc.close();
     super.dispose();
   }
 }

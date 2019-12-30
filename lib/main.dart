@@ -1,22 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test_pyramid_spike/core/http/http_client_impl.dart';
-import 'package:flutter_test_pyramid_spike/features/product_list/data/datasources/product_list_remote_datasource_impl.dart';
-import 'package:flutter_test_pyramid_spike/features/product_list/data/repositories/products_list_repository_impl.dart';
-import 'package:flutter_test_pyramid_spike/features/product_list/domain/repositories/products_list_repository.dart';
 import 'package:flutter_test_pyramid_spike/features/product_list/presentation/screens/products_list_screen.dart';
 import 'package:flutter_test_pyramid_spike/features/cart/presentation/screens/cart_screen.dart';
-import 'package:http/http.dart' as http;
+import 'package:get_it/get_it.dart';
+import 'injection_container.dart' as di;
 
-void main() => runApp(MyApp(
-    productsListRepository: ProductsListRepositoryImpl(
-        remoteDataSource: ProductListRemoteDataSourceImpl(
-            httpClient: HttpClientImpl(client: http.Client())))));
+void main() {
+  final serviceLocator = GetIt();
+  di.init(serviceLocator);
+  runApp(MyApp(serviceLocator));
+}
 
 class MyApp extends StatelessWidget {
-  const MyApp({this.productsListRepository});
-
-  final ProductsListRepository productsListRepository;
-
+  MyApp(GetIt serviceLocator) {
+    di.serviceLocator = serviceLocator;
+  }
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -45,8 +42,7 @@ class MyApp extends StatelessWidget {
           ),
           body: TabBarView(
             children: [
-              ProductsListScreen(
-                  productsListRepository: productsListRepository),
+              ProductsListScreen(),
               CartScreen(),
             ],
           ),
