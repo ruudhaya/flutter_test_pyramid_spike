@@ -5,7 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_test_pyramid_spike/features/product_list/presentation/widgets/product_list_item.dart';
 
 import '../builders/product_builder.dart';
-import '../features/product_list/mocks/mock_cart_quantity_provider.dart';
+import '../features/product_list/mocks/mock_cart_repository.dart';
 import '../test_utils/network_image_test_utils.dart';
 
 void main() {
@@ -18,7 +18,7 @@ void main() {
           home: Scaffold(
               body: ProductListItem(
                   product: products[0],
-                  cartQuantityProvider: MockCartQuantityProvider()))));
+                  cartRepository: MockCartRepository()))));
 
       await expectLater(find.byType(MaterialApp),
           matchesGoldenFile('golden_product_list_item.png'),

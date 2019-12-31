@@ -20,6 +20,6 @@ void main() {
   enableFlutterDriverExtension();
   registerMockResponse();
   final serviceLocator = GetIt();
-  di.init(sl: serviceLocator, mockClient: client);
+  di.init(serviceLocater: serviceLocator, mockClient: client);
   runApp(MyApp(serviceLocator));
 }

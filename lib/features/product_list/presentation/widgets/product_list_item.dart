@@ -1,25 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_test_pyramid_spike/features/cart/domain/repositories/cart_repository.dart';
 import 'package:flutter_test_pyramid_spike/features/product_list/domain/entities/product.dart';
-import 'package:flutter_test_pyramid_spike/features/product_list/presentation/bloc/cart_quantity_provider.dart';
 import 'package:flutter_test_pyramid_spike/features/product_list/presentation/widgets/product_list_item_imageview.dart';
 
 class ProductListItem extends StatefulWidget {
   const ProductListItem(
-      {@required this.product, @required this.cartQuantityProvider});
+      {@required this.product, @required this.cartRepository});
   final Product product;
-  final CartQuantityProvider cartQuantityProvider;
+  final CartRepository cartRepository;
 
   @override
   _ProductListItemState createState() => _ProductListItemState();
 }
 
 class _ProductListItemState extends State<ProductListItem> {
-  int _itemQuantity() =>
-      widget.cartQuantityProvider.getQuantity(widget.product);
-  void _incrementQuantity() => widget.cartQuantityProvider
-      .setQuantity(widget.product, _itemQuantity() + 1);
-  void _decrementQuantity() => widget.cartQuantityProvider
-      .setQuantity(widget.product, _itemQuantity() - 1);
+  int _itemQuantity() => widget.cartRepository.getQuantity(widget.product);
+  void _incrementQuantity() =>
+      widget.cartRepository.setQuantity(widget.product, _itemQuantity() + 1);
+  void _decrementQuantity() =>
+      widget.cartRepository.setQuantity(widget.product, _itemQuantity() - 1);
 
   @override
   Widget build(BuildContext context) {

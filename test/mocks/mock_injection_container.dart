@@ -11,34 +11,36 @@ import 'package:flutter_test_pyramid_spike/features/product_list/presentation/bl
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 
-GetIt sl;
+GetIt serviceLocater;
 
-void init({GetIt sl, http.Client mockClient}) {
+void init({GetIt serviceLocater, http.Client mockClient}) {
   //Features - ProductList
 
   //Bloc
-  sl.registerFactory(
-    () => ProductsListBloc(repository: sl(), cartRepository: sl()),
+  serviceLocater.registerFactory(
+    () => ProductsListBloc(repository: serviceLocater()),
   );
 
   //Repository
-  sl.registerFactory<ProductsListRepository>(
-      () => ProductsListRepositoryImpl(remoteDataSource: sl()));
+  serviceLocater.registerFactory<ProductsListRepository>(
+      () => ProductsListRepositoryImpl(remoteDataSource: serviceLocater()));
 
   //Datasource
-  sl.registerFactory<ProductListRemoteDataSource>(
-      () => ProductListRemoteDataSourceImpl(httpClient: sl()));
+  serviceLocater.registerFactory<ProductListRemoteDataSource>(
+      () => ProductListRemoteDataSourceImpl(httpClient: serviceLocater()));
 
-  sl.registerFactory<HttpClient>(() => HttpClientImpl(client: sl()));
+  serviceLocater.registerFactory<HttpClient>(
+      () => HttpClientImpl(client: serviceLocater()));
 
   //External
-  sl.registerFactory(() => mockClient);
+  serviceLocater.registerFactory(() => mockClient);
 
   //Features - Cart
 
   //Bloc
-  sl.registerFactory(() => CartBloc(cartRepository: sl()));
+  serviceLocater
+      .registerFactory(() => CartBloc(cartRepository: serviceLocater()));
 
-  //Repository
-  sl.registerLazySingleton<CartRepository>(() => CartRepositoryImpl());
+  serviceLocater
+      .registerLazySingleton<CartRepository>(() => CartRepositoryImpl());
 }

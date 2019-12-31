@@ -5,7 +5,7 @@ import 'package:flutter_test_pyramid_spike/features/product_list/presentation/wi
 
 import '../../../../builders/product_builder.dart';
 import '../../../../test_utils/network_image_test_utils.dart';
-import '../../mocks/mock_cart_quantity_provider.dart';
+import '../../../cart/mocks/mock_cart_repository.dart';
 
 void main() {
   testWidgets(
@@ -19,7 +19,7 @@ void main() {
           home: Scaffold(
               body: ProductsList(
         products: products,
-        cartQuantityProvider: MockCartQuantityProvider(),
+        cartRepository: MockCartRepository(),
       ))));
 
       //Asserts that the [Finder] locates the specified number of widgets in the widget tree.

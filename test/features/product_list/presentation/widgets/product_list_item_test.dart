@@ -4,7 +4,7 @@ import 'package:flutter_test_pyramid_spike/features/product_list/presentation/wi
 
 import '../../../../builders/product_builder.dart';
 import '../../../../test_utils/network_image_test_utils.dart';
-import '../../mocks/mock_cart_quantity_provider.dart';
+import '../../mocks/mock_cart_repository.dart';
 
 void main() {
   testWidgets('ProductListItem widget load', (WidgetTester tester) async {
@@ -16,7 +16,7 @@ void main() {
           home: Scaffold(
               body: ProductListItem(
                   product: products[0],
-                  cartQuantityProvider: MockCartQuantityProvider()))));
+                  cartRepository: MockCartRepository()))));
 
       expect(find.text('Apple iPhone 7'), findsOneWidget);
       expect(find.text('\$1,099.99'), findsOneWidget);
@@ -36,7 +36,7 @@ void main() {
           home: Scaffold(
               body: ProductListItem(
                   product: products[0],
-                  cartQuantityProvider: MockCartQuantityProvider()))));
+                  cartRepository: MockCartRepository()))));
 
       final addButton = find.byKey(const Key('ProductListItem_Add'));
       await tester.tap(addButton);

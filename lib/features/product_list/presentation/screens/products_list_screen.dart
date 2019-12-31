@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test_pyramid_spike/core/error/no_params.dart';
+import 'package:flutter_test_pyramid_spike/features/cart/domain/repositories/cart_repository.dart';
 import 'package:flutter_test_pyramid_spike/features/product_list/presentation/bloc/products_list_bloc.dart';
 import 'package:flutter_test_pyramid_spike/features/product_list/presentation/bloc/products_list_state.dart';
 import 'package:flutter_test_pyramid_spike/features/product_list/presentation/widgets/products_list.dart';
 
 class ProductsListScreen extends StatefulWidget {
-  const ProductsListScreen({@required ProductsListBloc bloc})
+  const ProductsListScreen(
+      {@required ProductsListBloc bloc,
+      @required CartRepository cartRepository})
       : assert(bloc != null),
-        _bloc = bloc;
+        assert(cartRepository != null),
+        _bloc = bloc,
+        _cartRepository = cartRepository;
+
   final ProductsListBloc _bloc;
+  final CartRepository _cartRepository;
 
   @override
   _ProductsListScreenState createState() => _ProductsListScreenState();
@@ -30,7 +37,7 @@ class _ProductsListScreenState extends State<ProductsListScreen> {
             } else if (productsListState is ProductsListLoaded) {
               return ProductsList(
                   products: productsListState.products,
-                  cartQuantityProvider: widget._bloc);
+                  cartRepository: widget._cartRepository);
             }
             return Container(
                 color: Colors.white,
