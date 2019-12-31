@@ -5,20 +5,24 @@ import 'package:flutter_test_pyramid_spike/features/product_list/presentation/wi
 
 class ProductListItem extends StatefulWidget {
   const ProductListItem(
-      {@required this.product, @required this.cartRepository});
-  final Product product;
-  final CartRepository cartRepository;
+      {@required Product product, @required CartRepository cartRepository})
+      : assert(product != null),
+        assert(cartRepository != null),
+        _product = product,
+        _cartRepository = cartRepository;
+  final Product _product;
+  final CartRepository _cartRepository;
 
   @override
   _ProductListItemState createState() => _ProductListItemState();
 }
 
 class _ProductListItemState extends State<ProductListItem> {
-  int _itemQuantity() => widget.cartRepository.getQuantity(widget.product);
+  int _itemQuantity() => widget._cartRepository.getQuantity(widget._product);
   void _incrementQuantity() =>
-      widget.cartRepository.setQuantity(widget.product, _itemQuantity() + 1);
+      widget._cartRepository.setQuantity(widget._product, _itemQuantity() + 1);
   void _decrementQuantity() =>
-      widget.cartRepository.setQuantity(widget.product, _itemQuantity() - 1);
+      widget._cartRepository.setQuantity(widget._product, _itemQuantity() - 1);
 
   @override
   Widget build(BuildContext context) {
@@ -28,14 +32,14 @@ class _ProductListItemState extends State<ProductListItem> {
           const Divider(height: 5.0),
           ListTile(
             title: Text(
-              '${widget.product.name}',
+              '${widget._product.name}',
               style: const TextStyle(
                 fontSize: 17.0,
               ),
             ),
             subtitle: Padding(
                 padding: const EdgeInsets.fromLTRB(0, 8.0, 0, 0),
-                child: Text('${widget.product.price}',
+                child: Text('${widget._product.price}',
                     style: const TextStyle(
                       fontSize: 12.0,
                       color: Colors.deepOrangeAccent,
@@ -56,7 +60,7 @@ class _ProductListItemState extends State<ProductListItem> {
             ]),
             leading: Column(
               children: <Widget>[
-                ProductListItemImageView(url: widget.product.image)
+                ProductListItemImageView(url: widget._product.image)
               ],
             ),
           )

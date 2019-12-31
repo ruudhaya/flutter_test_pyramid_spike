@@ -47,9 +47,7 @@ class MyApp extends StatelessWidget {
           ),
           body: TabBarView(
             children: [
-              ProductsListScreen(
-                  bloc: di.serviceLocator<ProductsListBloc>(),
-                  cartRepository: di.serviceLocator<CartRepository>()),
+              ProductsListScreen(bloc: di.serviceLocator<ProductsListBloc>()),
               CartScreen(bloc: di.serviceLocator<CartBloc>()),
             ],
           ),

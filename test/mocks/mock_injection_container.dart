@@ -38,8 +38,7 @@ void init({GetIt serviceLocater, http.Client mockClient}) {
   //Features - Cart
 
   //Bloc
-  serviceLocater
-      .registerFactory(() => CartBloc(cartRepository: serviceLocater()));
+  serviceLocater.registerFactory(() => CartBloc(repository: serviceLocater()));
 
   serviceLocater
       .registerLazySingleton<CartRepository>(() => CartRepositoryImpl());

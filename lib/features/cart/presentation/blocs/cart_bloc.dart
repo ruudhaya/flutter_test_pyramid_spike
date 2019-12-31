@@ -5,9 +5,9 @@ import 'package:flutter_test_pyramid_spike/features/cart/presentation/blocs/cart
 import 'package:bloc/bloc.dart';
 
 class CartBloc extends Bloc<NoParams, CartState> {
-  CartBloc({@required CartRepository cartRepository})
-      : assert(cartRepository != null),
-        _repository = cartRepository;
+  CartBloc({@required CartRepository repository})
+      : assert(repository != null),
+        _repository = repository;
 
   final CartRepository _repository;
 

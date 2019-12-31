@@ -5,18 +5,14 @@ import 'package:flutter_test_pyramid_spike/features/cart/domain/repositories/car
 import 'package:flutter_test_pyramid_spike/features/product_list/presentation/bloc/products_list_bloc.dart';
 import 'package:flutter_test_pyramid_spike/features/product_list/presentation/bloc/products_list_state.dart';
 import 'package:flutter_test_pyramid_spike/features/product_list/presentation/widgets/products_list.dart';
+import 'package:flutter_test_pyramid_spike/injection_container.dart';
 
 class ProductsListScreen extends StatefulWidget {
-  const ProductsListScreen(
-      {@required ProductsListBloc bloc,
-      @required CartRepository cartRepository})
+  const ProductsListScreen({@required ProductsListBloc bloc})
       : assert(bloc != null),
-        assert(cartRepository != null),
-        _bloc = bloc,
-        _cartRepository = cartRepository;
+        _bloc = bloc;
 
   final ProductsListBloc _bloc;
-  final CartRepository _cartRepository;
 
   @override
   _ProductsListScreenState createState() => _ProductsListScreenState();
@@ -37,7 +33,7 @@ class _ProductsListScreenState extends State<ProductsListScreen> {
             } else if (productsListState is ProductsListLoaded) {
               return ProductsList(
                   products: productsListState.products,
-                  cartRepository: widget._cartRepository);
+                  cartRepository: serviceLocator<CartRepository>());
             }
             return Container(
                 color: Colors.white,

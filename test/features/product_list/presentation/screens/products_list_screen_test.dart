@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_test_pyramid_spike/features/product_list/presentation/screens/products_list_screen.dart';
 
-import '../../../cart/mocks/mock_cart_repository.dart';
 import '../../mocks/mock_products_list_bloc.dart';
 
 void main() {
@@ -12,9 +11,7 @@ void main() {
     await tester.runAsync(() async {
       await tester.pumpWidget(MaterialApp(
           home: Scaffold(
-              body: ProductsListScreen(
-                  bloc: MockProductsListBloc(),
-                  cartRepository: MockCartRepository()))));
+              body: ProductsListScreen(bloc: MockProductsListBloc()))));
       //Pump the widget after some milliseconds so that loader is onscreen
       await Future.delayed(Duration(milliseconds: 10), () => tester.pump());
       //assert the presence of CircularProgressIndicator

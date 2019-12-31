@@ -28,7 +28,7 @@ void init(GetIt serviceLocator) {
   //Datasource
   serviceLocator.registerFactory<ProductListRemoteDataSource>(
       () => ProductListRemoteDataSourceImpl(httpClient: serviceLocator()));
-  
+
   serviceLocator.registerFactory<HttpClient>(
       () => HttpClientImpl(client: serviceLocator()));
 
@@ -38,8 +38,7 @@ void init(GetIt serviceLocator) {
   //Features - Cart
 
   //Bloc
-  serviceLocator
-      .registerFactory(() => CartBloc(cartRepository: serviceLocator()));
+  serviceLocator.registerFactory(() => CartBloc(repository: serviceLocator()));
 
   //Repository
   serviceLocator
