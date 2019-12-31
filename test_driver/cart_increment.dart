@@ -4,7 +4,7 @@ import 'package:flutter_test_pyramid_spike/main.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart';
 import 'package:mockito/mockito.dart';
-import '../test/mocks/mock_http_client.dart';
+import '../test/core/mocks/mock_http_client.dart';
 import '../test/mocks/mock_injection_container.dart' as di;
 
 MockHttpClient client = MockHttpClient();

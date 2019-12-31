@@ -3,8 +3,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_test_pyramid_spike/features/product_list/presentation/widgets/product_list_item.dart';
 
 import '../../../../builders/product_builder.dart';
-import '../../../../mocks/mock_cart_quantity_provider.dart';
-import '../../../../mocks/network_image_test_utils.dart';
+import '../../../../test_utils/network_image_test_utils.dart';
+import '../../mocks/mock_cart_quantity_provider.dart';
 
 void main() {
   testWidgets('ProductListItem widget load', (WidgetTester tester) async {

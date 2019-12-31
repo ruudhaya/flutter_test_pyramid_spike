@@ -5,8 +5,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_test_pyramid_spike/features/product_list/presentation/widgets/product_list_item.dart';
 
 import '../builders/product_builder.dart';
-import '../mocks/mock_cart_quantity_provider.dart';
-import '../mocks/network_image_test_utils.dart';
+import '../features/product_list/mocks/mock_cart_quantity_provider.dart';
+import '../test_utils/network_image_test_utils.dart';
 
 void main() {
   testWidgets('Golden test', (WidgetTester tester) async {
@@ -23,10 +23,10 @@ void main() {
       await expectLater(find.byType(MaterialApp),
           matchesGoldenFile('golden_product_list_item.png'),
           skip: !Platform.isMacOS);
-          //The skip parameter is used to skip the test if the platform the test is being run on is not Windows. 
-          //The reason for skipping the test when on a different platform is because images created by different platforms are different.
-          //So the test will fail if the golden image was created on Windows and the test is run on Linux and vice versa. 
-          //If you are on a Linux machine, use skip: !Platform.isLinux instead.*/
+      //The skip parameter is used to skip the test if the platform the test is being run on is not Windows.
+      //The reason for skipping the test when on a different platform is because images created by different platforms are different.
+      //So the test will fail if the golden image was created on Windows and the test is run on Linux and vice versa.
+      //If you are on a Linux machine, use skip: !Platform.isLinux instead.*/
     });
   });
 }
