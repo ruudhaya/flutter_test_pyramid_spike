@@ -13,7 +13,8 @@ void main() {
           home: Scaffold(
               body: ProductsListScreen(bloc: MockProductsListBloc()))));
       //pump the widget after some milliseconds so that loader is onscreen
-      await Future.delayed(Duration(milliseconds: 10), () => tester.pump());
+      await Future.delayed(
+          const Duration(milliseconds: 10), () => tester.pump());
       //assert the presence of CircularProgressIndicator
       expect(find.byType(CircularProgressIndicator), findsOneWidget);
     });
