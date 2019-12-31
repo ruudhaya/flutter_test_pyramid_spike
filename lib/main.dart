@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_test_pyramid_spike/features/cart/presentation/blocs/cart_bloc.dart';
 import 'package:flutter_test_pyramid_spike/features/product_list/presentation/bloc/products_list_bloc.dart';
 import 'package:flutter_test_pyramid_spike/features/product_list/presentation/screens/products_list_screen.dart';
 import 'package:flutter_test_pyramid_spike/features/cart/presentation/screens/cart_screen.dart';
@@ -45,7 +46,7 @@ class MyApp extends StatelessWidget {
           body: TabBarView(
             children: [
               ProductsListScreen(bloc: di.serviceLocator<ProductsListBloc>()),
-              CartScreen(),
+              CartScreen(bloc: di.serviceLocator<CartBloc>()),
             ],
           ),
         ),

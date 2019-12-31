@@ -1,32 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test_pyramid_spike/core/error/no_params.dart';
-import 'package:flutter_test_pyramid_spike/features/cart/data/repositories/cart_repository_impl.dart';
 import 'package:flutter_test_pyramid_spike/features/cart/presentation/blocs/cart_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test_pyramid_spike/features/cart/presentation/blocs/cart_state.dart';
 import 'package:flutter_test_pyramid_spike/features/cart/presentation/widgets/cart_list.dart';
-import 'package:flutter_test_pyramid_spike/injection_container.dart';
 
 class CartScreen extends StatefulWidget {
+  const CartScreen({@required CartBloc bloc})
+      : assert(bloc != null),
+        _bloc = bloc;
+  final CartBloc _bloc;
+
   @override
   _CartScreenState createState() => _CartScreenState();
 }
 
 class _CartScreenState extends State<CartScreen> {
-  CartBloc _bloc;
-
-  @override
-  void initState() {
-    _bloc = serviceLocator<CartBloc>();
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
-    _bloc.add(NoParams());
+    widget._bloc.add(NoParams());
     return Scaffold(
       body: BlocBuilder<CartBloc, CartState>(
-          bloc: _bloc,
+          bloc: widget._bloc,
           builder: (BuildContext context, CartState cartState) {
             if (cartState is CartLoading) {
               return const Center(child: CircularProgressIndicator());
@@ -57,7 +52,7 @@ class _CartScreenState extends State<CartScreen> {
 
   @override
   void dispose() {
-    _bloc.close();
+    widget._bloc.close();
     super.dispose();
   }
 }
