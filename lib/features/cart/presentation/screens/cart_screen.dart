@@ -11,6 +11,8 @@ class CartScreen extends StatefulWidget {
         _bloc = bloc;
   final CartBloc _bloc;
 
+  static const keyMessage = 'Message';
+
   @override
   _CartScreenState createState() => _CartScreenState();
 }
@@ -29,7 +31,7 @@ class _CartScreenState extends State<CartScreen> {
               return const Center(
                   child: Text(
                 'Error!!!',
-                key: Key('CartScreen_ErrorMessage'),
+                key: Key(CartScreen.keyMessage),
               ));
             } else if (cartState is CartLoaded) {
               return cartState.cartItems.isNotEmpty
@@ -39,7 +41,7 @@ class _CartScreenState extends State<CartScreen> {
                   : const Center(
                       child: Text(
                       'No Items In Cart',
-                      key: Key('CartScreen_ErrorMessage'),
+                      key: Key(CartScreen.keyMessage),
                     ));
             }
             return Container(

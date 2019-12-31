@@ -13,6 +13,12 @@ class ProductListItem extends StatefulWidget {
   final Product _product;
   final CartRepository _cartRepository;
 
+  static const keyName = 'Name';
+  static const keyPrice = 'Price';
+  static const keyQuantity = 'Quantity';
+  static const keyRemove = 'Remove';
+  static const keyAdd = 'Add';
+
   @override
   _ProductListItemState createState() => _ProductListItemState();
 }
@@ -33,6 +39,7 @@ class _ProductListItemState extends State<ProductListItem> {
           ListTile(
             title: Text(
               '${widget._product.name}',
+              key: const Key(ProductListItem.keyName),
               style: const TextStyle(
                 fontSize: 17.0,
               ),
@@ -40,6 +47,7 @@ class _ProductListItemState extends State<ProductListItem> {
             subtitle: Padding(
                 padding: const EdgeInsets.fromLTRB(0, 8.0, 0, 0),
                 child: Text('${widget._product.price}',
+                    key: const Key(ProductListItem.keyPrice),
                     style: const TextStyle(
                       fontSize: 12.0,
                       color: Colors.deepOrangeAccent,
@@ -47,14 +55,15 @@ class _ProductListItemState extends State<ProductListItem> {
                     ))),
             trailing: Row(mainAxisSize: MainAxisSize.min, children: <Widget>[
               IconButton(
-                key: const Key('ProductListItem_Remove'),
+                key: const Key(ProductListItem.keyRemove),
                 icon: Icon(Icons.remove),
                 onPressed: () => setState(
                     () => _itemQuantity() > 0 ? _decrementQuantity() : null),
               ),
-              Text(_itemQuantity().toString()),
+              Text(_itemQuantity().toString(),
+                  key: const Key(ProductListItem.keyQuantity)),
               IconButton(
-                  key: const Key('ProductListItem_Add'),
+                  key: const Key(ProductListItem.keyAdd),
                   icon: Icon(Icons.add),
                   onPressed: () => setState(() => _incrementQuantity()))
             ]),

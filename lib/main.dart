@@ -19,6 +19,10 @@ class MyApp extends StatelessWidget {
     // TODO(Sayeed): Not very happy with this. Is there a better way to set the global serviceLocator.
     di.serviceLocator = serviceLocator;
   }
+
+  static const keyProductListTab = 'ProductListTab';
+  static const keyCartTab = 'CartTab';
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -36,10 +40,10 @@ class MyApp extends StatelessWidget {
             bottom: TabBar(
               tabs: [
                 Tab(
-                    key: const Key('Main_ProductListTab'),
+                    key: const Key(MyApp.keyProductListTab),
                     icon: Icon(Icons.list)),
                 Tab(
-                    key: const Key('Main_CartTab'),
+                    key: const Key(MyApp.keyCartTab),
                     icon: Icon(Icons.shopping_cart)),
               ],
             ),

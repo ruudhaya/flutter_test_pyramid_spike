@@ -18,12 +18,13 @@ void main() {
                   product: products[0],
                   cartRepository: MockCartRepository()))));
 
-      expect(find.text('Apple iPhone 7'), findsOneWidget);
-      expect(find.text('\$1,099.99'), findsOneWidget);
+      expect(find.byKey(const Key(ProductListItem.keyName)), findsOneWidget);
+      expect(find.byKey(const Key(ProductListItem.keyPrice)), findsOneWidget);
       expect(find.byType(Image), findsOneWidget);
-      expect(find.byKey(const Key('ProductListItem_Add')), findsOneWidget);
-      expect(find.byKey(const Key('ProductListItem_Remove')), findsOneWidget);
-      expect(find.text('0'), findsOneWidget);
+      expect(find.byKey(const Key(ProductListItem.keyAdd)), findsOneWidget);
+      expect(find.byKey(const Key(ProductListItem.keyRemove)), findsOneWidget);
+      expect(
+          find.byKey(const Key(ProductListItem.keyQuantity)), findsOneWidget);
     });
   });
 
@@ -38,14 +39,14 @@ void main() {
                   product: products[0],
                   cartRepository: MockCartRepository()))));
 
-      final addButton = find.byKey(const Key('ProductListItem_Add'));
+      final addButton = find.byKey(const Key(ProductListItem.keyAdd));
       await tester.tap(addButton);
       await tester.tap(addButton);
 
       await tester.pump();
       expect(find.text('2'), findsOneWidget);
 
-      final removeButton = find.byKey(const Key('ProductListItem_Remove'));
+      final removeButton = find.byKey(const Key(ProductListItem.keyRemove));
       await tester.tap(removeButton);
 
       await tester.pump();

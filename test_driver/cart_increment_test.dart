@@ -25,31 +25,30 @@ void main() {
         'Verify product is seen in cart page on quantity increment and removed on quantity == 0',
         () async {
       //get add button
-      final addButton = finder.find.byValueKey('ProductListItem_Add');
+      final addButton = finder.find.byValueKey('Add');
 
       //tap add button twice
       await driver.tap(addButton);
       await driver.tap(addButton);
 
       //switch to cart tab by tapping on tabbar icon
-      final cartTab = finder.find.byValueKey('Main_CartTab');
+      final cartTab = finder.find.byValueKey('CartTab');
       await driver.tap(cartTab);
 
       //verify that the product is added
-      final productNameText =
-          finder.find.byValueKey('CartListItem_ProductName');
+      final productNameText = finder.find.byValueKey('Name');
       expect(await driver.getText(productNameText), 'Android One Power');
 
       //verify that the quantity is correct
-      final quantityText = finder.find.byValueKey('CartListItem_Quantity');
+      final quantityText = finder.find.byValueKey('Quantity');
       expect(await driver.getText(quantityText), '(2)');
 
       //switch to productList tab by tapping on tabbar icon
-      final productListTab = finder.find.byValueKey('Main_ProductListTab');
+      final productListTab = finder.find.byValueKey('ProductListTab');
       await driver.tap(productListTab);
 
       //get remove button
-      final removeButton = finder.find.byValueKey('ProductListItem_Remove');
+      final removeButton = finder.find.byValueKey('Remove');
 
       //tap remove button twice
       await driver.tap(removeButton);
@@ -59,7 +58,7 @@ void main() {
       await driver.tap(cartTab);
 
       //verify that no items in cart message is displayed
-      final errorText = find.byValueKey('CartScreen_ErrorMessage');
+      final errorText = find.byValueKey('Message');
       expect(await driver.getText(errorText), 'No Items In Cart');
 
       //switch to productList tab by tapping on tabbar icon

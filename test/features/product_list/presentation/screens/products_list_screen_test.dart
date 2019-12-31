@@ -12,7 +12,7 @@ void main() {
       await tester.pumpWidget(MaterialApp(
           home: Scaffold(
               body: ProductsListScreen(bloc: MockProductsListBloc()))));
-      //Pump the widget after some milliseconds so that loader is onscreen
+      //pump the widget after some milliseconds so that loader is onscreen
       await Future.delayed(Duration(milliseconds: 10), () => tester.pump());
       //assert the presence of CircularProgressIndicator
       expect(find.byType(CircularProgressIndicator), findsOneWidget);
