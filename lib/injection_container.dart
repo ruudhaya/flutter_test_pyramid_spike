@@ -38,7 +38,8 @@ void init(GetIt serviceLocator) {
   //Features - Cart
 
   //Bloc
-  serviceLocator.registerFactory(() => CartBloc(repository: serviceLocator()));
+  serviceLocator
+      .registerFactory(() => CartBloc(cartRepository: serviceLocator()));
 
   //Repository
   serviceLocator

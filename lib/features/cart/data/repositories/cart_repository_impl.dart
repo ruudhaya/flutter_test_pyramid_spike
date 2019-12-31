@@ -7,7 +7,6 @@ class CartRepositoryImpl implements CartRepository {
     return _shared;
   }
   CartRepositoryImpl._internal();
-
   static final CartRepositoryImpl _shared = CartRepositoryImpl._internal();
 
   final List<CartItem> _cartItems = [];

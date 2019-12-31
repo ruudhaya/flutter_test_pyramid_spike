@@ -7,14 +7,17 @@ import 'package:flutter_test_pyramid_spike/features/product_list/domain/entities
 import 'package:flutter_test_pyramid_spike/features/product_list/domain/repositories/products_list_repository.dart';
 
 class ProductsListRepositoryImpl implements ProductsListRepository {
-  ProductsListRepositoryImpl({@required this.remoteDataSource});
+  ProductsListRepositoryImpl(
+      {@required ProductListRemoteDataSource remoteDataSource})
+      : assert(remoteDataSource != null),
+        _remoteDataSource = remoteDataSource;
 
-  final ProductListRemoteDataSource remoteDataSource;
+  final ProductListRemoteDataSource _remoteDataSource;
 
   @override
   Future<Either<Failure, List<Product>>> getProducts() async {
     try {
-      final products = await remoteDataSource.getProducts();
+      final products = await _remoteDataSource.getProducts();
       return Right(products);
     } on APIException {
       return Left(APIFailure(message: 'Api Error'));

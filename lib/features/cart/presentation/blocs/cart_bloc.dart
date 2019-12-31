@@ -5,9 +5,11 @@ import 'package:flutter_test_pyramid_spike/features/cart/presentation/blocs/cart
 import 'package:bloc/bloc.dart';
 
 class CartBloc extends Bloc<NoParams, CartState> {
-  CartBloc({@required this.repository});
+  CartBloc({@required CartRepository cartRepository})
+      : assert(cartRepository != null),
+        _repository = cartRepository;
 
-  CartRepository repository;
+  final CartRepository _repository;
 
   @override
   CartState get initialState => CartInitial();
@@ -15,7 +17,7 @@ class CartBloc extends Bloc<NoParams, CartState> {
   @override
   Stream<CartState> mapEventToState(NoParams event) async* {
     yield CartLoading();
-    final cartItems = repository.getCartItems();
+    final cartItems = _repository.getCartItems();
     yield CartLoaded(cartItems);
   }
 }

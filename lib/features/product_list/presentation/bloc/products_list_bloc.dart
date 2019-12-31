@@ -9,10 +9,16 @@ import 'package:meta/meta.dart';
 
 class ProductsListBloc extends Bloc<NoParams, ProductsListState>
     implements CartQuantityProvider {
-  ProductsListBloc({@required this.repository, @required this.cartRepository});
+  ProductsListBloc(
+      {@required ProductsListRepository repository,
+      @required CartRepository cartRepository})
+      : assert(repository != null),
+        assert(cartRepository != null),
+        _repository = repository,
+        _cartRepository = cartRepository;
 
-  ProductsListRepository repository;
-  CartRepository cartRepository;
+  final ProductsListRepository _repository;
+  final CartRepository _cartRepository;
 
   @override
   ProductsListState get initialState => ProductsListInitial();
@@ -20,7 +26,7 @@ class ProductsListBloc extends Bloc<NoParams, ProductsListState>
   @override
   Stream<ProductsListState> mapEventToState(NoParams event) async* {
     yield ProductsListLoading();
-    final output = await repository.getProducts();
+    final output = await _repository.getProducts();
     yield* output.fold((failure) async* {
       yield ProductsListError('Something went wrong!');
     }, (products) async* {
@@ -30,11 +36,11 @@ class ProductsListBloc extends Bloc<NoParams, ProductsListState>
 
   @override
   int getQuantity(Product product) {
-    return cartRepository.getQuantity(product);
+    return _cartRepository.getQuantity(product);
   }
 
   @override
   void setQuantity(Product product, int quantity) {
-    cartRepository.setQuantity(product, quantity);
+    _cartRepository.setQuantity(product, quantity);
   }
 }

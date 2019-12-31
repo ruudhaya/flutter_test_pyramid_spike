@@ -6,13 +6,15 @@ import 'package:flutter_test_pyramid_spike/features/product_list/data/datasource
 import 'package:flutter_test_pyramid_spike/features/product_list/data/models/product_model.dart';
 
 class ProductListRemoteDataSourceImpl implements ProductListRemoteDataSource {
-  ProductListRemoteDataSourceImpl({@required this.httpClient});
-  final HttpClient httpClient;
+  ProductListRemoteDataSourceImpl({@required HttpClient httpClient})
+      : assert(httpClient != null),
+        _httpClient = httpClient;
+  final HttpClient _httpClient;
 
   @override
   Future<List<ProductModel>> getProducts() async {
-    final response =
-        await httpClient.get('http://www.mocky.io/v2/5e01d1cb2f00008000dcd310');
+    final response = await _httpClient
+        .get('http://www.mocky.io/v2/5e01d1cb2f00008000dcd310');
 
     if (response.statusCode < 200 || response.statusCode > 299) {
       throw APIException();

@@ -12,6 +12,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   MyApp(GetIt serviceLocator) {
+    // TODO(Sayeed): Not very happy with this. Is there a better way to set the global serviceLocator.
     di.serviceLocator = serviceLocator;
   }
   // This widget is the root of your application.

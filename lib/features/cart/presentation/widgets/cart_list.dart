@@ -3,15 +3,17 @@ import 'package:flutter_test_pyramid_spike/features/cart/domain/entities/cart_it
 import 'package:flutter_test_pyramid_spike/features/cart/presentation/widgets/cart_list_item.dart';
 
 class CartList extends StatelessWidget {
-  const CartList({@required this.cartItems});
-  final List<CartItem> cartItems;
+  const CartList({@required List<CartItem> cartItems})
+      : assert(cartItems != null),
+        _cartItems = cartItems;
+  final List<CartItem> _cartItems;
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: cartItems.length,
+      itemCount: _cartItems.length,
       itemBuilder: (BuildContext context, int index) {
-        return CartListItem(cartItem: cartItems[index]);
+        return CartListItem(cartItem: _cartItems[index]);
       },
     );
   }

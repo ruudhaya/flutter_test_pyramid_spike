@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test_pyramid_spike/features/cart/domain/entities/cart_item.dart';
 
 class CartListItem extends StatelessWidget {
-  const CartListItem({@required this.cartItem});
-  final CartItem cartItem;
+  const CartListItem({@required CartItem cartItem})
+      : assert(cartItem != null),
+        _cartItem = cartItem;
+  final CartItem _cartItem;
 
   @override
   Widget build(BuildContext context) {
@@ -13,14 +15,14 @@ class CartListItem extends StatelessWidget {
           const Divider(height: 5.0),
           ListTile(
             title: Text(
-              '${cartItem.product.name}',
+              '${_cartItem.product.name}',
               key: const Key('CartListItem_ProductName'),
               style: const TextStyle(
                 fontSize: 17.0,
               ),
             ),
             trailing: Row(mainAxisSize: MainAxisSize.min, children: <Widget>[
-              Text('(${cartItem.quantity.toString()})',
+              Text('(${_cartItem.quantity.toString()})',
                   key: const Key('CartListItem_Quantity'),
                   style: TextStyle(fontWeight: FontWeight.bold)),
             ]),
