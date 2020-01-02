@@ -1,7 +1,7 @@
 
 # flutter_test_pyramid_spike
 
-This project attempts to setup the test pyramid for a flutter app. The app has been layered as prescribed by ResoCoder blog https://resocoder.com/category/tutorials/flutter/tdd-clean-architecture/.
+This project attempts to setup the test pyramid for a flutter app. The app has been layered as prescribed by ResoCoder blog (https://resocoder.com/category/tutorials/flutter/tdd-clean-architecture/).
 
 ## Running the project (VSCode)
 	
