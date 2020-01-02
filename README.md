@@ -5,9 +5,9 @@ This project attempts to setup the test pyramid for a flutter app. The app has b
 
 ## Running the project (VSCode)
 	
-	- Configure both Android emulator, iOS simulator. https://stackoverflow.com/questions/49280884/how-to-set-up-devices-for-vs-code-for-a-flutter-emulator
-	- Command: F5
-	- You can choose if you want to run on emulator or simulator. Recommended that we test on both.
+- Configure both Android emulator, iOS simulator. https://stackoverflow.com/questions/49280884/how-to-set-up-devices-for-vs-code-for-a-flutter-emulator
+- Command: F5
+- You can choose if you want to run on emulator or simulator. Recommended that we test on both.
 
 ## Running unit + widget + golden tests
 	
