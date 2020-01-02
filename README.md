@@ -90,4 +90,6 @@ All dependencies must be specified in pubspec.yaml
 - RepaintBoundary
 	- https://medium.com/flutter-community/testing-custompaint-widgets-in-flutter-using-golden-image-files-889fe3bdf9ca
 
+- Scaling UI
+	- https://medium.com/flutter-community/flutter-effectively-scale-ui-according-to-different-screen-sizes-2cb7c115ea0a
 
