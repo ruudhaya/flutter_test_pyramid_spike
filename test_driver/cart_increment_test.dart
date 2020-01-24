@@ -28,8 +28,8 @@ void main() {
       // TODO(Sayeed): 
       // keys used in finder.find.byValueKey are duplicates from the code. We should probably
       // create separate key files per feature to hold these keys to avoid duplicates in actual code and tests.
-      // P.S. Separate key files because we cannot put the keys in ProductListItem.dart 
-      // as this Flutter UI class cannot be imported in driver tests.
+      // We should use separate key files because we cannot put the keys in ProductListItem.dart 
+      // as this FlutterUI class cannot be imported in driver tests.
 
       //get add button
       final addButton = finder.find.byValueKey('Add');
