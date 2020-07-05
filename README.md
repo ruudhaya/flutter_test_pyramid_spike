@@ -1,21 +1,13 @@
 
 # flutter_test_pyramid_spike
 
-This project attempts to setup the test pyramid for a flutter app. The app has been layered as prescribed by ResoCoder blog https://resocoder.com/category/tutorials/flutter/tdd-clean-architecture/.
+This project attempts to setup the test pyramid for a flutter app. The app follows a BLoC architecture pattern as prescribed in this blog https://resocoder.com/category/tutorials/flutter/tdd-clean-architecture/.
 
-## Running the project (VSCode)
+### Running the project (VSCode)
 	
 - Configure both Android emulator, iOS simulator. https://stackoverflow.com/questions/49280884/how-to-set-up-devices-for-vs-code-for-a-flutter-emulator
 - Command: F5
 - You can choose if you want to run on emulator or simulator. Recommended that we test on both.
-
-## Running unit + widget + golden tests
-	
-From project root (flutter_test_pyramid_spike) run `flutter test` in Terminal
-
-## Running Integration tests
-
-From project root (flutter_test_pyramid_spike) run `flutter drive --target=test_driver/cart_increment.dart` in Terminal
 
 ## Types of tests added
 
@@ -39,9 +31,15 @@ From project root (flutter_test_pyramid_spike) run `flutter drive --target=test_
 	- https://medium.com/flutter-community/flutter-golden-tests-compare-widgets-with-snapshots-27f83f266cea
 	- https://medium.com/flutter-community/testing-custompaint-widgets-in-flutter-using-golden-image-files-889fe3bdf9ca
 
-- Commands: To run various tests see above
+### Running Unit + Widget + Golden tests
+	
+From project root (flutter_test_pyramid_spike) run `flutter test` in Terminal
 
-## Dependencies 
+### Running Integration tests
+
+From project root (flutter_test_pyramid_spike) run `flutter drive --target=test_driver/cart_increment.dart` in Terminal
+
+### Dependencies 
 	
 All dependencies must be specified in pubspec.yaml
 
@@ -55,29 +53,29 @@ All dependencies must be specified in pubspec.yaml
 - Test Dependencies
 	- mockito: ^4.0.0: For mocking. (see link above)
 
-## Patterns/Concepts Used
+### Patterns/Concepts Used
 	
 - Flutter clean architecture. https://resocoder.com/category/tutorials/flutter/tdd-clean-architecture/
 - BLoc pattern. https://resocoder.com/2019/10/26/flutter-bloc-library-tutorial-1-0-0-stable-reactive-state-management/  
 - Separation of Concerns(S), Interface Segragation(I), Dependency Inversion(D)	
 - Functional style error handling using Either (dartz package)
 
-## Callouts
+### Issues Faced
 
-- Network Images mocking in tests to avoid exceptions being thrown. See `product_list_item_test.dart`. Details here: 
+- How to solve exceptions being thrown in widget tests the widget downloads an image from the network. See `product_list_item_test.dart`. Details here: 
 	- https://iirokrankka.com/2018/09/16/image-network-widget-tests/
 
 - How to solve Not found: 'dart:ui' error while running integration tests on Flutter. Details here:
 	- https://github.com/flutter/flutter/issues/27826
 	- https://stackoverflow.com/questions/52462646/how-to-solve-not-found-dartui-error-while-running-integration-tests-on-flutt
 
-## Questions
+### Areas Of Improvement
 
 - Service Locator design
 - Should we group golden_tests and integration tests by feature
 - Wiremock for mocking network calls
 
-## Useful links (Optional read)
+### Further Reading
 
 - Dependency injection for mocking service calls.		
 	- https://blog.codemagic.io/integration-tests-codemagic/
